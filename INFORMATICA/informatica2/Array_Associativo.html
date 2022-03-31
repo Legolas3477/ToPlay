@@ -1,0 +1,59 @@
+<?php
+
+function isprimo($num)
+{
+    if ($num != 1)
+    {
+        $limit = intval(sqrt($num)) + 1;
+        $ind = 2;
+        $primo = true;
+        do {
+            if (is_int($num / $ind)) {
+                $primo = false;
+            }
+            $ind++;
+        } while ($ind < $limit && $primo);
+    }
+    else 
+    {
+        $primo = false;
+    }
+    return $primo;
+}
+
+function primiout($num)
+{
+    while ($num > 1)
+    {
+        $ind = 2;
+        $notfratto = true;
+        while ($notfratto)
+        {
+            if (is_int($num/$ind))
+            {
+                $num = $num / $ind;
+                $notfratto = false;
+                echo $ind;
+                if ($num > 1)
+                {
+                    echo "x";
+                }
+            }
+            else 
+            {
+                $ind++;
+            }
+        }
+    }
+}
+
+$num = array_shift($_GET);
+for ($ind = 1; $ind <= $num; $ind++)
+{
+    if (!isprimo($ind))
+    {
+        echo "[".$ind."]";
+        primiout($ind);
+        echo "<br>";
+    }
+}

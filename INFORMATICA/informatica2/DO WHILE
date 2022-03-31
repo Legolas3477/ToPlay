@@ -1,0 +1,11 @@
+<?php
+
+$a = $_GET["a"];
+do
+{
+	echo $a;
+    echo "<hr>";
+    $a=$a-1;
+}
+while ($a>=0);
+?>
